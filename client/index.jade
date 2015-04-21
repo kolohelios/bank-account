@@ -32,7 +32,7 @@ html(lang='en', ng-app='bank-account')
         .col-xs-12
           h3 Ledger
           .row
-            .col-xs-4
+            .col-xs-12.col-sm-4
               h4 Deposits
               table.table.table-striped
                 thead
@@ -40,10 +40,10 @@ html(lang='en', ng-app='bank-account')
                     th Amount
                     th Date
                 tbody
-                  tr(ng-repeat='deposit in deposits track by $index')
-                    td {{deposit.amount | currency}} 
+                  tr(ng-repeat='deposit in deposits track by $index', ng-click='undo("deposit")')
+                    td {{deposit.amount | currency}}
                     td {{deposit.date | date: shortDate}}
-            .col-xs-4
+            .col-xs-12.col-sm-4
               h4 Withdrawals
               table.table.table-striped
                 thead
@@ -51,11 +51,10 @@ html(lang='en', ng-app='bank-account')
                     th Amount
                     th Date
                 tbody
-                  tr(ng-repeat='withdrawal in withdrawals track by $index')
-                    td {{withdrawal.amount | currency}} 
+                  tr(ng-repeat='withdrawal in withdrawals track by $index', ng-click='undo("withdrawal")')
+                    td {{withdrawal.amount | currency}}
                     td {{withdrawal.date | date: shortDate}}
-              
-            .col-xs-4
+            .col-xs-12.col-sm-4
               h4 Fees
               table.table.table-striped
                 thead
@@ -63,8 +62,8 @@ html(lang='en', ng-app='bank-account')
                     th Amount
                     th Date
                 tbody
-                  tr(ng-repeat='fee in fees track by $index')
-                    td {{fee.amount | currency}} 
+                  tr(ng-repeat='fee in fees track by $index', ng-click='undo("fee")')
+                    td {{fee.amount | currency}}
                     td {{fee.date | date: shortDate}}
 
     script(src='/vendor/jquery/dist/jquery.min.js')
